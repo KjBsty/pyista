@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyista</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">{{ username }}</h1>
+        <div class="row">
+            {% for i in data %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ i.src }}" class="card-img-top w" alt="{{ i.captions }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.captions }}</h5>
+                        <p class="card-text">Views: {{ i.views }}</p>
+                        <p class="card-text">Likes: {{ i.likes }}</p>
+                        <p class="card-text">{{ i.formatted_date }}</p>
+                        <p class="card-text">{{ i.video_url }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
