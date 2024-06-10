@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }} Story - Pyista</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">{{ username }}</h1>
+        <div class="row">
+            {% for i in data %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="{{ i.img_url }}" class="card-img-top w" alt="{{ i.taken_at }}">
+                        <div class="card-body">
+                            <p class="card-text">uploaded: {{ i.taken_at }}</p>
+                            <p class="card-text">expires: {{ i.expires }}</p>
+                            {% if i.video_url %}
+                            <a class="card-text" href="{{ i.video_url }}"rel="noreferrer nofollow" target="_blank">view</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if not story %}
+        <div class="text-center">
+            <span>No Story or Account is private</span>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
