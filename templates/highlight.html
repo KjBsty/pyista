@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }} Highlight - Pyista</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4">{{ username }} - Highlights</h2>
+        <div class="row">
+            {% for i in data %}
+                <div class="col-md-3 text-center">
+                    <div class="card mb-3 shadow-sm pt-3 align-items-center">
+                        <img src="{{ i.img_url }}" class="card-img-top rounded-circle w-50" alt="{{ i.title }}">
+                        <div class="card-body">
+                            <p class="card-text">{{ i.title }}</p>
+                            <button onclick="location.href='/highlightStory/{{ i.id }}';" type="button" class="btn btn-sm btn-primary">View</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if not highlight %}
+        <div class="text-center">
+            <span>No highlight or Account is private</span>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
